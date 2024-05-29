@@ -24,36 +24,72 @@
 
 // Explanation:
 // Since matrix[0][0]=0 and matrix[0][3]=0. Therefore 1st row, 1st column and 4th column will be set to 0
-function markCol(array,m,i){
-    for(let j=0;j<m;j++){
-        if(array[i][j]!==0){
-            array[i][j]=-1
-        }
-    }
-    console.log(array,"row")
-}
-function markRow(array,n,j){
-    for(let i=0;i<n;i++){
-        if(array[i][j]!==0){
-            array[i][j]=-1
-        }
-    }
-    console.log(array,"col")
-}
 
-function setZero(array,n,m){
+//---------bruteforce solution-----------
+
+// function markCol(array,m,i){
+//     for(let j=0;j<m;j++){
+//         if(array[i][j]!==0){
+//             array[i][j]=-1
+//         }
+//     }
+//     console.log(array,"row")
+// }
+// function markRow(array,n,j){
+//     for(let i=0;i<n;i++){
+//         if(array[i][j]!==0){
+//             array[i][j]=-1
+//         }
+//     }
+//     console.log(array,"col")
+// }
+
+// function setZero(array,n,m){
+
+//     for(let i=0;i<n;i++){
+//         for(let j=0;j<m;j++){
+//             if(array[i][j]==0){
+//                 markCol(array,m,i)
+//                 markRow(array,n,j)
+//             }
+//         }
+//     }
+//     for(let i=0;i<n;i++){
+//         for(let j=0;j<m;j++){
+//             if(array[i][j]==-1){
+//                 array[i][j]=0
+//             }
+//         }
+//     }
+//     return array;
+// }
+
+// const array=[[1,1,1],[1,0,1],[1,1,1]]
+// let n=array.length;
+// let m=array[0].length
+// console.log(setZero(array,n,m)) // [[1,0,1],[0,0,0],[1,0,1]]
+
+//---------better solution-----------//
+
+//removed marking functions
+
+function setZero(array){
+    let n=array.length;
+    let m=array[0].length
+    let aRow=new Array(m).fill(0)
+    let aCol=new Array(m).fill(0)
 
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
             if(array[i][j]==0){
-                markCol(array,m,i)
-                markRow(array,n,j)
+                aRow[i]=-1
+                aCol[j]=-1
             }
         }
     }
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
-            if(array[i][j]==-1){
+            if(aRow[i]==-1||aCol[j]==-1){
                 array[i][j]=0
             }
         }
@@ -61,9 +97,6 @@ function setZero(array,n,m){
     return array;
 }
 
-const array=[[1,1,1],[1,0,1],[1,1,1]]
-let n=array.length;
-let m=array[0].length
-console.log(setZero(array,n,m)) // [[1,0,1],[0,0,0],[1,0,1]]
+const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0]]
 
-//bruteforce solution
+console.log(setZero(array))
