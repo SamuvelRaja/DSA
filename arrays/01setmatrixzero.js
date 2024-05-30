@@ -143,7 +143,7 @@ function setZero(array){
         }
     }
     if(col0==0){
-        for(let i=0;i<m;i++){
+        for(let i=0;i<n;i++){
                 array[i][0]=0
         }
     }
