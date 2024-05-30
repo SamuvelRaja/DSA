@@ -116,27 +116,40 @@ function setZero(array){
     let n=array.length;
     let m=array[0].length
    //removed refrence array
-
+    let col0;
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
             if(array[i][j]==0){
                 array[i][0]=0
-                array[0][j]=0
-
+                if(j!=0){
+                    array[0][j]=0
+                }else{
+                    col0=0
+                }
             }
         }
     }
     console.log(array)
-    for(let i=0;i<n;i++){
-        for(let j=0;j<m;j++){
+    for(let i=1;i<n;i++){
+        for(let j=1;j<m;j++){
             if(array[i][0]==0||array[0][j]==0){
                 array[i][j]=0
             }
         }
     }
+    if(array[0][0]==0){
+        for(let j=0;j<m;j++){
+                array[0][j]=0
+        }
+    }
+    if(col0==0){
+        for(let i=0;i<m;i++){
+                array[i][0]=0
+        }
+    }
     return array;
 }
 
-const array=[[3,1,1,1],[1,1,1,1],[1,1,1,0],[0,1,1,1]]
+const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0],[0,1,1,1]]
 
 console.log(setZero(array))
