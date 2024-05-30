@@ -69,27 +69,67 @@
 // let m=array[0].length
 // console.log(setZero(array,n,m)) // [[1,0,1],[0,0,0],[1,0,1]]
 
+// time complexity of the above code will be
+//o(m*n)+(m+n) + o(m*n)
+//space complexity will be o(1) cause we dont taking any extra array
+
 //---------better solution-----------//
 
 //removed marking functions
 
+// function setZero(array){
+//     let n=array.length;
+//     let m=array[0].length
+//     let aRow=new Array(m).fill(0)
+//     let aCol=new Array(m).fill(0)
+
+//     for(let i=0;i<n;i++){
+//         for(let j=0;j<m;j++){
+//             if(array[i][j]==0){
+//                 aRow[i]=-1
+//                 aCol[j]=-1
+//             }
+//         }
+//     }
+//     for(let i=0;i<n;i++){
+//         for(let j=0;j<m;j++){
+//             if(aRow[i]==-1||aCol[j]==-1){
+//                 array[i][j]=0
+//             }
+//         }
+//     }
+//     return array;
+// }
+
+// const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0]]
+
+// console.log(setZero(array))
+
+// time complexity of the above code will be
+//o(m*n) + o(m*n)
+//o(2(m*n))
+//space complexity will be o(m+n) cause we  taking extra arrays
+
+//---------optimal solution-----------//
+
 function setZero(array){
     let n=array.length;
     let m=array[0].length
-    let aRow=new Array(m).fill(0)
-    let aCol=new Array(m).fill(0)
+   //removed refrence array
 
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
             if(array[i][j]==0){
-                aRow[i]=-1
-                aCol[j]=-1
+                array[i][0]=0
+                array[0][j]=0
+
             }
         }
     }
+    console.log(array)
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
-            if(aRow[i]==-1||aCol[j]==-1){
+            if(array[i][0]==0||array[0][j]==0){
                 array[i][j]=0
             }
         }
@@ -97,6 +137,6 @@ function setZero(array){
     return array;
 }
 
-const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0]]
+const array=[[3,1,1,1],[1,1,1,1],[1,1,1,0],[0,1,1,1]]
 
 console.log(setZero(array))
