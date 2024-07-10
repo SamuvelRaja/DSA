@@ -40,9 +40,23 @@ function printTriangleSame(n){
         pattern=""
     }
 }
-const n=7
+
+function printTriangleReverse(n){
+    let pattern=""
+    for(let i=0; i<n; i++){
+        for(let j=n; j>i; j--){
+            // console.log(i,j)
+            pattern+="* "
+        }
+        console.log(pattern)
+        pattern=""
+    }
+}
+
+const n=5
 
 //printSquarePattern(n)
 //printTrianglePattern(n)
 //printTriangleNum(n)
-printTriangleSame(n)
+//printTriangleSame(n)
+printTriangleReverse(n)
