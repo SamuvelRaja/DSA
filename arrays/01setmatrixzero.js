@@ -119,6 +119,7 @@ function setZero(array){
     let col0;
     for(let i=0;i<n;i++){
         for(let j=0;j<m;j++){
+            console.log(i,j)
             if(array[i][j]==0){
                 array[i][0]=0
                 if(j!=0){
@@ -150,6 +151,6 @@ function setZero(array){
     return array;
 }
 
-const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0],[0,1,1,1]]
+const array=[[1,1,1,1],[1,1,1,1],[1,1,1,0]]
 
 console.log(setZero(array))
